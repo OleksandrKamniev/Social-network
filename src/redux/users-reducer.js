@@ -1,25 +1,13 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_USERS';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 let initialState = {
-    users: [
-        // {
-        //     id: 1, photoUrl: 'https://media.self.com/photos/618eb45bc4880cebf08c1a5b/4:3/w_2560%2Cc_limit/1236337133',
-        //     fullName: 'John', follow: true, status: "King", location: { city: 'Odesa', country: 'Ukraine' }
-        // },
-        // {
-        //     id: 2, photoUrl: 'https://media.self.com/photos/618eb45bc4880cebf08c1a5b/4:3/w_2560%2Cc_limit/1236337133',
-        //     fullName: 'Kate', follow: false, status: "Princess", location: { city: 'New-York', country: 'USA' }
-        // },
-        // {
-        //     id: 3, photoUrl: 'https://media.self.com/photos/618eb45bc4880cebf08c1a5b/4:3/w_2560%2Cc_limit/1236337133',
-        //     fullName: 'Jimmy', follow: true, status: "Boss", location: { city: 'Paris', country: 'France' }
-        // },
-        // {
-        //     id: 4, photoUrl: 'https://media.self.com/photos/618eb45bc4880cebf08c1a5b/4:3/w_2560%2Cc_limit/1236337133',
-        //     fullName: 'Pete', follow: false, status: "Knight", location: { city: 'London', country: 'UK' }
-        // },
-    ]
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 2,
 };
 const usersReducer = (state = initialState, action) => {
 
@@ -28,8 +16,8 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.id == action.userId) {
-                        return { ...u, follow: true }
+                    if (u.id === action.userId) {
+                        return { ...u, followed: true }
                     }
                     return u;
                 })
@@ -38,16 +26,22 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.id == action.userId) {
-                        return { ...u, follow: false }
+                    if (u.id === action.userId) {
+                        return { ...u, followed: false }
                     }
                     return u;
                 })
             }
         case SET_USERS: {
-            return { ...state, users: [...state.users, ...action.users] }
+            return { ...state, users: action.users }
         }
+        case SET_CURRENT_PAGE: {
+            return { ...state, currentPage: action.currentPage }
 
+        }
+        case SET_TOTAL_USERS_COUNT: {
+            return { ...state, totalUsersCount: action.count }
+        }
         default:
             return state;
 
@@ -58,5 +52,6 @@ const usersReducer = (state = initialState, action) => {
 export const followAC = (userId) => ({ type: FOLLOW, userId })
 export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId })
 export const setUsersAC = (users) => ({ type: SET_USERS, users })
-
+export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
+export const setUsersTotalCountAC = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, count: totalUsersCount })
 export default usersReducer;
