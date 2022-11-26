@@ -6,16 +6,16 @@ const ProfileInfo = (props) => {
         return <Preloader />
     }
     return (
-        <div>
-            <div>
+        <>
+            <div className={classes.avatar}>
                 <img alt="logo"
-                    src='https://99designs-blog.imgix.net/blog/wp-content/uploads/2016/08/featured.png?auto=format&q=60&w=2060&h=1158.75&fit=crop&crop=faces'></img>
+                    src='https://res.cloudinary.com/dtpgi0zck/image/upload/s--SsFGdDoP--/c_fill,h_580,w_860/v1/EducationHub/photos/ocean-waves.jpg'></img>
             </div>
             <div className={classes.descriptionBlock}>
                 <img src={props.profile.photos.small} />
                 <div>Hello there!</div>
             </div>
-        </div>
+        </>
     )
 }
 export default ProfileInfo;
