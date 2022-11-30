@@ -15,6 +15,29 @@ const ProfileInfo = (props) => {
                 <img src={props.profile.photos.small} />
                 <div>Hello there!</div>
             </div>
+            <div className={classes.contacts}> <h3>Contacts</h3>
+                <ul className={classes.contactsList}>
+                    <li> <a href={props.profile.contacts.facebook}
+                        className={classes.elementContactsList} >Facebook</a></li>
+                    <li> <a href={props.profile.contacts.website}
+                        className={classes.elementContactsList}>Website</a></li>
+                    <li> <a href={props.profile.contacts.vk}
+                        className={classes.elementContactsList}>Vk</a></li>
+                    <li> <a href={props.profile.contacts.twitter}
+                        className={classes.elementContactsList}>Twitter</a></li>
+                    <li> <a href={props.profile.contacts.instagram}
+                        className={classes.elementContactsList}>Instagram</a></li>
+                    <li> <a href={props.profile.contacts.youtube}
+                        className={classes.elementContactsList}>Youtube</a></li>
+                    <li> <a href={props.profile.contacts.github}
+                        className={classes.elementContactsList}>GitHub</a></li>
+                    <li> <a href={props.profile.contacts.mainLink}
+                        className={classes.elementContactsList}>ManiLink</a></li>
+                </ul>
+            </div>
+            <div className={classes.lookingForAJob}>
+                Looking for a job
+            </div>
         </>
     )
 }

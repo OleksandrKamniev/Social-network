@@ -1,3 +1,13 @@
 .descriptionBlock {
     padding: 10px;
 }
+
+.contactsList {
+    list-style-type: none;
+
+}
+
+.elementContactsList {
+    text-decoration: none;
+    color: black;
+}
