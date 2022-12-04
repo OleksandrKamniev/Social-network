@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Nav from './components/Nav/Nav';
 import Music from './components/Music/Music';
 import News from './components/News/News';
@@ -20,7 +20,7 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <div className='app-writer'>
-        <Header />
+        <HeaderContainer />
         <Nav />
 
         <div class='app-wrapper-content'>
